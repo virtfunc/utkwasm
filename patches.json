@@ -14,7 +14,7 @@
     {
       "name": "TPM2 AntiLog",
       "description": "Prevent TPM logging & PCR Extension. Works on some AMI firmware. <a href=\"https://virtfunc.com/projects/tpm2-antilog/\">See writeup</a>",
-      "content": "# Return EFI_SUCCESS early in AMI's internal HashLogExtendEvent function.\n39045756-FCA3-49BD-8DAE-C7BAE8389AFF 10 P:488BC4488958104.89....4.894..8..........415.415.41:4831C0C3..........................................\n39045756-FCA3-49BD-8DAE-C7BAE8389AFF 10 P:4C894C24204C89442418488954241048894C24084881ECE801000048C7:4831C0C3..................................................\n"
+      "content": "# Return EFI_SUCCESS early in AMI's internal HashLogExtendEvent function.\n39045756-FCA3-49BD-8DAE-C7BAE8389AFF 10 P:488BC4488958104.89....4.894..8..........415.415.41:4831C0C3..........................................\n39045756-FCA3-49BD-8DAE-C7BAE8389AFF 10 P:4C894C24204C89442418488954241048894C24084881ECE801000048C7:4831C0C3..................................................\n# Clear EAX (EFI_SUCCESS) instead of calling AMI's PEI HashLogExtendEvent in AmiTPM20PlatformMem.\n47166606-AF87-4F6C-B17B-DC48DD321590 12 P:FF10........83C420:31C0..............\n# Clear EAX (EFI_SUCCESS) instead of calling AMI's PEI HashLogExtendEvent in AmiTPM20PlatformPei.\n0D8039FF-49E9-4CC9-A806-BB7C31B0BCB0 12 P:FF10........83C420:31C0..............\n0D8039FF-49E9-4CC9-A806-BB7C31B0BCB0 12 P:FF1083C420:31C0......\n"
     },
     {
       "name": "REBAR",
