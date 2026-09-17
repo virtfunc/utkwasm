@@ -7,6 +7,11 @@ It's not very well tested, so there may be bugs.
 
 I have run into issues with it parsing some 64 MB Gigabyte images, where it'll thrown an error.
 
+# binaries
+
+Hosted at https://utk.virtfunc.com/
+
+
 # build script
 
 ```bash
