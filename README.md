@@ -5,7 +5,7 @@ Very similar to my previous project https://github.com/virtfunc/uefipatchwasm, t
 Aims to be UEFIPatch compatible, while adding TE image editing, as well as parsing of newer images and section types.
 It's not very well tested, so there may be bugs. 
 
-I have run into issues with it parsing some 64MB gigabyte images, where it'll thrown an error.
+I have run into issues with it parsing some 64 MB Gigabyte images, where it'll thrown an error.
 
 # build script
 
