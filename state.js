@@ -1,5 +1,6 @@
 // gVar -> my prof is malding rn.
 var patchMapping = {};
+var patchStartTime = 0; // Track patch execution start time
 
 //load the worker (which loads the wasm + js wrapper)
 function init() {
@@ -49,6 +50,9 @@ function init() {
         output.appendChild(document.createTextNode(e.data.text + "\n"));
         break;
       case "complete":
+        // Calculate total elapsed time in seconds
+        var elapsedTime = ((performance.now() - patchStartTime) / 1000).toFixed(2);
+
         // when we are done, extract the output file from the worker, save it to the user's machine
         // then reset the system for the next patch by enabling the patch button.
         var blob = new Blob([e.data.data], {
@@ -63,8 +67,8 @@ function init() {
         a.download = outputRomName;
         a.click();
         URL.revokeObjectURL(url);
-        status.textContent =
-          "Done"
+
+        status.textContent = `Done (${elapsedTime}s)`;
         patchButtonState("Patch", false);
         break;
     }
@@ -73,18 +77,18 @@ function init() {
   // pull the patches json.
   // if you dont like this, feel free to block this request with your browser, and you can supply ur own patches.
   // but as you can see later, it will always show the contents of the pending patches giving the user a chance
-  // to audit it as they see fit. A second however: the json is injected as raw html, so a script could be loaded 
+  // to audit it as they see fit. A second however: the json is injected as raw html, so a script could be loaded
   // to hide this behaviour.
   fetch("patches.json")
-    .then((response) => response.json())
-    .then((data) => {
-      buildPatches(data.patches);
-      refreshPatches();
-    })
-    .catch((error) => {
-      console.error("Error loading patches:", error);
-      status.innerHTML = "Error loading patches.json";
-    });
+  .then((response) => response.json())
+  .then((data) => {
+    buildPatches(data.patches);
+    refreshPatches();
+  })
+  .catch((error) => {
+    console.error("Error loading patches:", error);
+    status.innerHTML = "Error loading patches.json";
+  });
 
 
   // EVENT LISTENERS
@@ -99,7 +103,11 @@ function init() {
         alert("Please select at least one patch.");
         return;
       }
-      var reader = new FileReader(); 
+
+      // Start timing right as the read/patch operation begins
+      patchStartTime = performance.now();
+
+      var reader = new FileReader();
       reader.onload = function (e) {
         var inputRomArray = new Uint8Array(e.target.result);
         patchButtonState("Patching...", true);
@@ -117,40 +125,41 @@ function init() {
 
   // patch checkbox listener -> update patches
   document
-    .getElementById("patches-selector")
-    .addEventListener("click", function (e) {
-      if (e.target.type === "checkbox") {
-        refreshPatches();
-      }
-    });
+  .getElementById("patches-selector")
+  .addEventListener("click", function (e) {
+    if (e.target.type === "checkbox") {
+      refreshPatches();
+    }
+  });
   // when custom patches textbox is updated, refresh the patches.
   document
-    .querySelector('textarea[data-patchname="custom"]')
-    .addEventListener("input", function () {
-      //console.log("Custom patches updated");
-      refreshPatches();
-    });
+  .querySelector('textarea[data-patchname="custom"]')
+  .addEventListener("input", function () {
+    //console.log("Custom patches updated");
+    refreshPatches();
+  });
   // drag file listener
   document
-    .addEventListener("dragover", (e) => {
-      e.preventDefault();
-      if (e.dataTransfer.types.includes("Files")) {
-        document.body.style.backgroundColor = "#0827F5"; // bluescreen color
-      }
-    });
+  .addEventListener("dragover", (e) => {
+    e.preventDefault();
+    if (e.dataTransfer.types.includes("Files")) {
+      document.body.style.backgroundColor = "#0827F5"; // bluescreen color
+    }
+  });
   // watch for leaving the drop zone
   document
-    .addEventListener("dragleave", (e) => {
-      document.body.style.backgroundColor = ""; // reset to original color
-    });
+  .addEventListener("dragleave", (e) => {
+    document.body.style.backgroundColor = ""; // reset to original color
+  });
   // dropped file listener
   document
-    .addEventListener("drop", (e) => {
-      e.preventDefault();
-      document.body.style.backgroundColor = "";
-      document.getElementById("input-rom").files = e.dataTransfer.files;
-    });
+  .addEventListener("drop", (e) => {
+    e.preventDefault();
+    document.body.style.backgroundColor = "";
+    document.getElementById("input-rom").files = e.dataTransfer.files;
+  });
 }
+
 function refreshPatches() {
   //console.log("Refreshing patches...");
   patchMapping["custom"] = document.querySelector(
@@ -193,9 +202,9 @@ function buildPatches(patches) {
 
     const nameElement = document.createElement("strong"); //bolded title
     nameElement.textContent = patch.name + ": ";          //separated by a colon
-    patchDiv.appendChild(nameElement);                    
+    patchDiv.appendChild(nameElement);
 
-    const description = document.createElement("span");   
+    const description = document.createElement("span");
     description.innerHTML = patch.description;            //followed by the raw (from json) patch description
     patchDiv.appendChild(description);
 

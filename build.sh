@@ -11,7 +11,7 @@ git -C fiano init
 git -C fiano checkout "$FIANO_COMMIT" 2>/dev/null || git -C fiano fetch --depth 1 https://github.com/linuxboot/fiano "$FIANO_COMMIT"
 git -C fiano reset --hard "$FIANO_COMMIT"
 git -C fiano clean -fd
-git -C fiano apply ../fiano_sigpatcher_v5.patch ../0002-fiano-js-lzma-delegation.patch
+git -C fiano apply ../0001-fiano_sigpatcher_v5.patch ../0002-fiano-wasm-perf.patch
 
 wget -qO lzma_wasm.iife.js "https://unpkg.com/lzma-wasm@${LZMA_WASM_VERSION}/dist/iife/index.js"
 [ "$(sha256sum < lzma_wasm.iife.js)" = "$LZMA_EXPECTED_HASH  -" ] # we cant trust randoms on unpkg to not get compromised

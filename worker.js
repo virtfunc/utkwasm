@@ -1,42 +1,3 @@
-// UTK WebAssembly worker.
-//
-// Loads fiano's UTK patcher (utk.wasm, a Go js/wasm build) together with
-// Go's wasm_exec.js runtime glue and runs patch jobs off the main thread.
-//
-// The wasm module is a Go program, not an Emscripten module: there is no
-// virtual filesystem and no C main() to call. Instead the Go side registers
-// the global function
-//
-//   utkPatch(rom: Uint8Array, patchesTxt: string, onLog: (line) => void)
-//     -> { ok: true, data: Uint8Array, places: number, skipped: number }
-//      | { ok: false, error: string }
-//
-// and this worker simply forwards messages and results to the page.
-//
-// ---------------------------------------------------------------------------
-// PERF: liblzma delegation (requires utk.wasm built with
-// 0002-fiano-js-lzma-delegation.patch).
-//
-// utk.wasm looks for global utkLzmaCompress/utkLzmaDecompress functions and
-// delegates LZMA to them when present (liblzma compiled to wasm is ~7x faster
-// at decoding and ~3x faster at encoding than the pure-Go LZMA inside
-// js/wasm, which otherwise dominates the runtime). When the hooks are absent
-// utk.wasm silently falls back to the pure-Go path — functionally identical,
-// just slow. To get the speedup, THREE files must sit next to this worker:
-//
-//   lzma_wasm.iife.js   the lzma-wasm npm package's iife bundle (vendored by
-//                       build.sh, or: npm i lzma-wasm &&
-//                       cp node_modules/lzma-wasm/dist/iife/index.js .)
-//   worker-lzma-glue.js registers the hooks from the lzma_wasm global
-//   utk.wasm            built with the delegation patch
-//
-// Just copying worker-lzma-glue.js into the repo is NOT enough: this worker
-// must load both scripts and finish initWasm() BEFORE utkPatch can run, or
-// the hooks are missing at call time and everything silently falls back.
-// The boot sequence below therefore awaits lzma init (in parallel with the
-// wasm download) before starting the Go runtime.
-// ---------------------------------------------------------------------------
-
 importScripts("wasm_exec.js");
 
 var readySent = false;
@@ -104,7 +65,6 @@ var lzmaReady = (function () {
     // which throws in workers (no window). Shim it before importScripts.
     if (typeof window === "undefined") self.window = self;
     importScripts("lzma_wasm.iife.js");
-    importScripts("worker-lzma-glue.js");
     return installJsLzma().then(
       function (ok) {
         lzmaActive = !!ok;
@@ -202,3 +162,44 @@ self.onmessage = function (e) {
     post({ type: "error", text: "UTK wasm module failed: " + err });
   }
 };
+//LZMA GLUE FUNCS
+function installJsLzma() {
+  if (typeof lzma_wasm === "undefined") {
+    console.warn("[lzma-glue] lzma_wasm global not found; skipping delegation");
+    return Promise.resolve(false);
+  }
+  return lzma_wasm.initWasm().then(
+    function () {
+      globalThis.utkLzmaCompress = function (data, level) {
+        // Level capped at 1 on purpose: for firmware FVMAIN payloads,
+        // level 1 is ~3.4x faster than the pure-Go encoder inside js/wasm
+        // and produces output ~4% SMALLER than the pure-Go level-7 encoder
+        // (so it cannot overflow a volume the current build already fits).
+        // Raise the cap if you need maximum ratio instead.
+        try {
+          return lzma_wasm.compress(data, { format: "lzma", level: Math.min(level, 1) });
+        } catch (e) {
+          console.warn("[lzma-glue] compress failed, falling back to pure Go:", e && e.message);
+          return new Uint8Array(0);
+        }
+      };
+      globalThis.utkLzmaDecompress = function (data, expectedSize) {
+        try {
+          if (expectedSize > 0) {
+            return lzma_wasm.decompress(data, { expectedSize: expectedSize });
+          }
+          return lzma_wasm.decompress(data);
+        } catch (e) {
+          console.warn("[lzma-glue] decompress failed, falling back to pure Go:", e && e.message);
+          return new Uint8Array(0);
+        }
+      };
+      console.log("[lzma-glue] utkLzmaCompress/utkLzmaDecompress registered (liblzma-wasm active)");
+      return true;
+    },
+    function (err) {
+      console.warn("[lzma-glue] initWasm() failed; pure-Go fallback:", err);
+      return false;
+    },
+  );
+}
