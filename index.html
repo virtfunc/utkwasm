@@ -4,13 +4,13 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Wasm UEFIPatch</title>
+  <title>Wasm UTK</title>
   <link rel="stylesheet" href="stylesheet.css">
 </head>
 
 <body onload="init()">
 
-  <h2 class="title-width no-bottom">Wasm UEFIPatch </h2>
+  <h2 class="title-width no-bottom">Wasm UTK </h2>
   <label class="link" for="toggleAbout" style="cursor:pointer;">
     Toggle Info
   </label>
@@ -25,17 +25,20 @@
     <h3 class="title">Notes:</h3>
     <ul>
       <li>Modified and compiled by <a href="https://virtfunc.com" target="_blank">VirtFunc</a>.</li>
-      <li>Uses <a href="https://github.com/LongSoft/UEFITool/blob/old_engine/UEFIPatch/" target="_blank">UEFIPatch</a>
-        under the hood. Upstream License: <a href="https://github.com/LongSoft/UEFITool?tab=BSD-2-Clause-1-ov-file"
-          target="_blank">BSD-2-Clause</a>.</li>
+      <li>Uses <a href="https://github.com/linuxboot/fiano" target="_blank">UTK</a> from
+        <a href="https://github.com/linuxboot/fiano" target="_blank">fiano</a> under the hood (the equivalent of
+        <code>utk firmware.rom patch save out.rom</code>). Upstream License:
+        <a href="https://github.com/linuxboot/fiano/blob/master/LICENSE" target="_blank">BSD-3-Clause</a>.</li>
       <li>Source: <a href="https://github.com/VirtFunc/uefipatchwasm" target="_blank">GitHub:
           VirtFunc/uefipatchwasm</a>.</li>
-      <li>Wasm module is ~3MiB, may load slowly as a result.</li>
-      <li>Old UEFITool engine is used, it has been known to <a target="_blank"
-          href="https://github.com/LongSoft/UEFITool/issues/192">break some firmware images</a>. Proceed only if you
-        have recovery method (or don't care).</li>
-      <li>Performance is roughly 80% of the CLI version, due to Wasm overhead. Firefox is much slower in my
-        experience.</li>
+      <li>UTK wasm build: <span id="utk-version">loading...</span></li>
+      <li>Wasm module is ~5.5MiB (~1.5MiB compressed over the wire), may load slowly as a result.</li>
+      <li>Patch rules use the <a
+          href="https://raw.githubusercontent.com/LongSoft/UEFITool/refs/heads/old_engine/UEFIPatch/patches.txt"
+          target="_blank">UEFIPatch patches.txt format</a>; rules that do not apply to your firmware are reported
+        and skipped.</li>
+      <li>Everything runs locally in your browser; no uploads.</li>
+      <li>Flashing patched firmware is risky. Proceed only if you have a recovery method (or don't care).</li>
     </ul>
   </div>
 
@@ -76,10 +79,10 @@
       <pre id="output"></pre>
     </div>
   </div>
-  <figure style="overflow:visible;">
+  <p style="overflow:visible;">
     <div id="status"></div>
-    <noscript>JavaScript is disabled. Enable JavaScript and WASM to use UEFIPatch.</noscript>
-  </figure>
+    <noscript>JavaScript is disabled. Enable JavaScript and WASM to use UTK.</noscript>
+  </p>
   <script src="init.js"></script>
 </body>
 

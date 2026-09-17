@@ -31,16 +31,22 @@ function init() {
         break;
 
       case "ready":
-        // enable the patch button
+        // enable the patch button and show which UTK build is running
         patchButtonState("Patch", false);
+        var versionEl = document.getElementById("utk-version");
+        if (versionEl && e.data.version) {
+          versionEl.textContent = e.data.version;
+        }
         break;
       case "error":
         patchButtonState("Patch", false);
-        status.innerHTML = e.data.text;
+        status.textContent = e.data.text;
         break;
       case "stdout":
       case "stderr":
-        output.innerHTML += e.data.text + "\n";
+        // firmware names come straight from the image, so use text nodes
+        // instead of innerHTML
+        output.appendChild(document.createTextNode(e.data.text + "\n"));
         break;
       case "complete":
         // when we are done, extract the output file from the worker, save it to the user's machine
@@ -57,6 +63,8 @@ function init() {
         a.download = outputRomName;
         a.click();
         URL.revokeObjectURL(url);
+        status.textContent =
+          "Done"
         patchButtonState("Patch", false);
         break;
     }
@@ -87,6 +95,10 @@ function init() {
     var inputRom = document.getElementById("input-rom").files[0];
     var patchesTxt = document.getElementById("patches-pending").innerText;
     if (inputRom) { //do we have a rom to patch? yes: patch it
+      if (!patchesTxt.trim()) { // no: throw error
+        alert("Please select at least one patch.");
+        return;
+      }
       var reader = new FileReader(); 
       reader.onload = function (e) {
         var inputRomArray = new Uint8Array(e.target.result);

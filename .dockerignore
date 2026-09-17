@@ -1,6 +1,0 @@
-# Ignore build outputs and git repository
-output/
-UEFIPatch/output/
-UEFITool/output/
-.git/
-.vscode/

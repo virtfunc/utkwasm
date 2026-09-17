@@ -1,3 +1,5 @@
-#ignore object files
+# build inputs / editor noise
 *.o
-src/UEFITool/UEFIPatch/output/
+*.swp
+.vimrc
+.vscode/
