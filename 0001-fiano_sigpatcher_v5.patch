@@ -1,0 +1,1320 @@
+diff --git a/integration/roms/OVMF.json b/integration/roms/OVMF.json
+index 06ebc45..19c3345 100644
+--- a/integration/roms/OVMF.json
++++ b/integration/roms/OVMF.json
+@@ -220,6 +220,53 @@
+ 																	"State": 248
+ 																},
+ 																"Type": "EFI_FV_FILETYPE_PEIM",
++																"Sections": [
++																	{
++																		"Header": {
++																			"Type": 25
++																		},
++																		"Type": "EFI_SECTION_RAW",
++																		"ExtractPath": ""
++																	},
++																	{
++																		"Header": {
++																			"Type": 27
++																		},
++																		"Type": "EFI_SECTION_PEI_DEPEX",
++																		"ExtractPath": "",
++																		"DepEx": [
++																			{
++																				"OpCode": "TRUE"
++																			},
++																			{
++																				"OpCode": "END"
++																			}
++																		]
++																	},
++																	{
++																		"Header": {
++																			"Type": 16
++																		},
++																		"Type": "EFI_SECTION_PE32",
++																		"ExtractPath": ""
++																	},
++																	{
++																		"Header": {
++																			"Type": 21
++																		},
++																		"Type": "EFI_SECTION_USER_INTERFACE",
++																		"ExtractPath": "",
++																		"Name": "PcdPeim"
++																	},
++																	{
++																		"Header": {
++																			"Type": 20
++																		},
++																		"Type": "EFI_SECTION_VERSION",
++																		"ExtractPath": "",
++																		"Version": "4.0"
++																	}
++																],
+ 																"ExtractPath": "",
+ 																"DataOffset": 24
+ 															},
+@@ -248,6 +295,53 @@
+ 																	"State": 248
+ 																},
+ 																"Type": "EFI_FV_FILETYPE_PEIM",
++																"Sections": [
++																	{
++																		"Header": {
++																			"Type": 27
++																		},
++																		"Type": "EFI_SECTION_PEI_DEPEX",
++																		"ExtractPath": "",
++																		"DepEx": [
++																			{
++																				"OpCode": "TRUE"
++																			},
++																			{
++																				"OpCode": "END"
++																			}
++																		]
++																	},
++																	{
++																		"Header": {
++																			"Type": 25
++																		},
++																		"Type": "EFI_SECTION_RAW",
++																		"ExtractPath": ""
++																	},
++																	{
++																		"Header": {
++																			"Type": 16
++																		},
++																		"Type": "EFI_SECTION_PE32",
++																		"ExtractPath": ""
++																	},
++																	{
++																		"Header": {
++																			"Type": 21
++																		},
++																		"Type": "EFI_SECTION_USER_INTERFACE",
++																		"ExtractPath": "",
++																		"Name": "ReportStatusCodeRouterPei"
++																	},
++																	{
++																		"Header": {
++																			"Type": 20
++																		},
++																		"Type": "EFI_SECTION_VERSION",
++																		"ExtractPath": "",
++																		"Version": "1.0"
++																	}
++																],
+ 																"ExtractPath": "",
+ 																"DataOffset": 24
+ 															},
+@@ -276,6 +370,56 @@
+ 																	"State": 248
+ 																},
+ 																"Type": "EFI_FV_FILETYPE_PEIM",
++																"Sections": [
++																	{
++																		"Header": {
++																			"Type": 27
++																		},
++																		"Type": "EFI_SECTION_PEI_DEPEX",
++																		"ExtractPath": "",
++																		"DepEx": [
++																			{
++																				"OpCode": "PUSH",
++																				"GUID": {
++																					"GUID": "0065D394-9951-4144-82A3-0AFC8579C251"
++																				}
++																			},
++																			{
++																				"OpCode": "END"
++																			}
++																		]
++																	},
++																	{
++																		"Header": {
++																			"Type": 25
++																		},
++																		"Type": "EFI_SECTION_RAW",
++																		"ExtractPath": ""
++																	},
++																	{
++																		"Header": {
++																			"Type": 16
++																		},
++																		"Type": "EFI_SECTION_PE32",
++																		"ExtractPath": ""
++																	},
++																	{
++																		"Header": {
++																			"Type": 21
++																		},
++																		"Type": "EFI_SECTION_USER_INTERFACE",
++																		"ExtractPath": "",
++																		"Name": "StatusCodeHandlerPei"
++																	},
++																	{
++																		"Header": {
++																			"Type": 20
++																		},
++																		"Type": "EFI_SECTION_VERSION",
++																		"ExtractPath": "",
++																		"Version": "1.0"
++																	}
++																],
+ 																"ExtractPath": "",
+ 																"DataOffset": 24
+ 															},
+@@ -304,6 +448,56 @@
+ 																	"State": 248
+ 																},
+ 																"Type": "EFI_FV_FILETYPE_PEIM",
++																"Sections": [
++																	{
++																		"Header": {
++																			"Type": 27
++																		},
++																		"Type": "EFI_SECTION_PEI_DEPEX",
++																		"ExtractPath": "",
++																		"DepEx": [
++																			{
++																				"OpCode": "PUSH",
++																				"GUID": {
++																					"GUID": "01F34D25-4DE2-23AD-3FF3-36353FF323F1"
++																				}
++																			},
++																			{
++																				"OpCode": "END"
++																			}
++																		]
++																	},
++																	{
++																		"Header": {
++																			"Type": 25
++																		},
++																		"Type": "EFI_SECTION_RAW",
++																		"ExtractPath": ""
++																	},
++																	{
++																		"Header": {
++																			"Type": 16
++																		},
++																		"Type": "EFI_SECTION_PE32",
++																		"ExtractPath": ""
++																	},
++																	{
++																		"Header": {
++																			"Type": 21
++																		},
++																		"Type": "EFI_SECTION_USER_INTERFACE",
++																		"ExtractPath": "",
++																		"Name": "PlatformPei"
++																	},
++																	{
++																		"Header": {
++																			"Type": 20
++																		},
++																		"Type": "EFI_SECTION_VERSION",
++																		"ExtractPath": "",
++																		"Version": "1.0"
++																	}
++																],
+ 																"ExtractPath": "",
+ 																"DataOffset": 24
+ 															},
+@@ -332,6 +526,67 @@
+ 																	"State": 248
+ 																},
+ 																"Type": "EFI_FV_FILETYPE_PEIM",
++																"Sections": [
++																	{
++																		"Header": {
++																			"Type": 27
++																		},
++																		"Type": "EFI_SECTION_PEI_DEPEX",
++																		"ExtractPath": "",
++																		"DepEx": [
++																			{
++																				"OpCode": "PUSH",
++																				"GUID": {
++																					"GUID": "B9E0ABFE-5979-4914-977F-6DEE78C278A6"
++																				}
++																			},
++																			{
++																				"OpCode": "PUSH",
++																				"GUID": {
++																					"GUID": "7408D748-FC8C-4EE6-9288-C4BEC092A410"
++																				}
++																			},
++																			{
++																				"OpCode": "PUSH",
++																				"GUID": {
++																					"GUID": "01F34D25-4DE2-23AD-3FF3-36353FF323F1"
++																				}
++																			},
++																			{
++																				"OpCode": "AND"
++																			},
++																			{
++																				"OpCode": "AND"
++																			},
++																			{
++																				"OpCode": "END"
++																			}
++																		]
++																	},
++																	{
++																		"Header": {
++																			"Type": 16
++																		},
++																		"Type": "EFI_SECTION_PE32",
++																		"ExtractPath": ""
++																	},
++																	{
++																		"Header": {
++																			"Type": 21
++																		},
++																		"Type": "EFI_SECTION_USER_INTERFACE",
++																		"ExtractPath": "",
++																		"Name": "DxeIpl"
++																	},
++																	{
++																		"Header": {
++																			"Type": 20
++																		},
++																		"Type": "EFI_SECTION_VERSION",
++																		"ExtractPath": "",
++																		"Version": "1.0"
++																	}
++																],
+ 																"ExtractPath": "",
+ 																"DataOffset": 24
+ 															},
+@@ -346,6 +601,56 @@
+ 																	"State": 248
+ 																},
+ 																"Type": "EFI_FV_FILETYPE_PEIM",
++																"Sections": [
++																	{
++																		"Header": {
++																			"Type": 27
++																		},
++																		"Type": "EFI_SECTION_PEI_DEPEX",
++																		"ExtractPath": "",
++																		"DepEx": [
++																			{
++																				"OpCode": "PUSH",
++																				"GUID": {
++																					"GUID": "01F34D25-4DE2-23AD-3FF3-36353FF323F1"
++																				}
++																			},
++																			{
++																				"OpCode": "END"
++																			}
++																		]
++																	},
++																	{
++																		"Header": {
++																			"Type": 25
++																		},
++																		"Type": "EFI_SECTION_RAW",
++																		"ExtractPath": ""
++																	},
++																	{
++																		"Header": {
++																			"Type": 16
++																		},
++																		"Type": "EFI_SECTION_PE32",
++																		"ExtractPath": ""
++																	},
++																	{
++																		"Header": {
++																			"Type": 21
++																		},
++																		"Type": "EFI_SECTION_USER_INTERFACE",
++																		"ExtractPath": "",
++																		"Name": "S3Resume2Pei"
++																	},
++																	{
++																		"Header": {
++																			"Type": 20
++																		},
++																		"Type": "EFI_SECTION_VERSION",
++																		"ExtractPath": "",
++																		"Version": "1.0"
++																	}
++																],
+ 																"ExtractPath": "",
+ 																"DataOffset": 24
+ 															},
+@@ -374,6 +679,65 @@
+ 																	"State": 248
+ 																},
+ 																"Type": "EFI_FV_FILETYPE_PEIM",
++																"Sections": [
++																	{
++																		"Header": {
++																			"Type": 27
++																		},
++																		"Type": "EFI_SECTION_PEI_DEPEX",
++																		"ExtractPath": "",
++																		"DepEx": [
++																			{
++																				"OpCode": "PUSH",
++																				"GUID": {
++																					"GUID": "F894643D-C449-42D1-8EA8-85BDD8C65BDE"
++																				}
++																			},
++																			{
++																				"OpCode": "PUSH",
++																				"GUID": {
++																					"GUID": "01F34D25-4DE2-23AD-3FF3-36353FF323F1"
++																				}
++																			},
++																			{
++																				"OpCode": "AND"
++																			},
++																			{
++																				"OpCode": "END"
++																			}
++																		]
++																	},
++																	{
++																		"Header": {
++																			"Type": 25
++																		},
++																		"Type": "EFI_SECTION_RAW",
++																		"ExtractPath": ""
++																	},
++																	{
++																		"Header": {
++																			"Type": 16
++																		},
++																		"Type": "EFI_SECTION_PE32",
++																		"ExtractPath": ""
++																	},
++																	{
++																		"Header": {
++																			"Type": 21
++																		},
++																		"Type": "EFI_SECTION_USER_INTERFACE",
++																		"ExtractPath": "",
++																		"Name": "CpuMpPei"
++																	},
++																	{
++																		"Header": {
++																			"Type": 20
++																		},
++																		"Type": "EFI_SECTION_VERSION",
++																		"ExtractPath": "",
++																		"Version": "1.0"
++																	}
++																],
+ 																"ExtractPath": "",
+ 																"DataOffset": 24
+ 															}
+diff --git a/pkg/uefi/file.go b/pkg/uefi/file.go
+index bd0d48b..eb4abfb 100644
+--- a/pkg/uefi/file.go
++++ b/pkg/uefi/file.go
+@@ -54,9 +54,8 @@ var SupportedFiles = map[FVFileType]bool{
+ 	FVFileTypeSECCore:  true,
+ 	FVFileTypePEICore:  true,
+ 	FVFileTypeDXECore:  true,
+-	// TODO: Commenting out this line prevents PEI modules from being
+-	// decompressed. This solves the problem of PEI being too big when recompressed.
+-	//FVFileTypePEIM:               true,
++	// PEI modules are safe to parse now: assembly reuses unchanged streams and shrinks pad files.
++	FVFileTypePEIM:               true,
+ 	FVFileTypeDriver:             true,
+ 	FVFileTypeCombinedPEIMDriver: true,
+ 	FVFileTypeApplication:        true,
+diff --git a/pkg/visitors/assemble.go b/pkg/visitors/assemble.go
+index 3ca15eb..3483fca 100644
+--- a/pkg/visitors/assemble.go
++++ b/pkg/visitors/assemble.go
+@@ -58,6 +58,20 @@ func (v *Assemble) Visit(f uefi.Firmware) error {
+ 			// No children, buffer should already contain data.
+ 			return nil
+ 		}
++
++		if !f.Resizable && fvLayoutEnd(f) > f.Length { // shrink pad files to make room for files which grew
++			shrinkPadFiles(f, fvLayoutEnd(f)-f.Length+f.FreeSpace)
++			for i := 0; i <= len(f.Files); i++ {
++				end := fvLayoutEnd(f)
++				if end <= f.Length {
++					break
++				}
++				need := end - f.Length
++				if shrinkPadFiles(f, need) < need || fvLayoutEnd(f) >= end {
++					break // No pad capacity or no progress; the error is reported below.
++				}
++			}
++		}
+ 		// We assume the buffer already contains the header. We repopulate the header from the buffer
+ 		// Construct the full buffer.
+ 		// The FV header is the only thing we've read in so far.
+@@ -84,37 +98,21 @@ func (v *Assemble) Visit(f uefi.Firmware) error {
+ 				log.Fatalf("%v", file.Header.GUID)
+ 			}
+ 
+-			// Pad to the 8 byte alignments.
+-			alignedOffset := uefi.Align8(fileOffset)
+-			// Read out the file alignment requirements
+-			if alignBase := file.Header.Attributes.GetAlignment(); alignBase != 1 {
+-				hl := file.HeaderLen()
+-				// We need to align the data, not the header. This is so terrible.
+-				fileDataOffset := uefi.Align(alignedOffset+hl, alignBase)
+-				// Calculate the starting offset of the file
+-				newOffset := fileDataOffset - hl
+-				if gap := (newOffset - alignedOffset); gap >= 8 && gap < uefi.FileHeaderMinLength {
+-					// We need to re align to the next boundary cause we can't put a pad file in here.
+-					// Who thought this was a good idea?
+-					fileDataOffset = uefi.Align(fileDataOffset+1, alignBase)
+-					newOffset = fileDataOffset - hl
++			alignedOffset, insertOffset := fileLayoutOffset(file, fileOffset)
++			if insertOffset != alignedOffset {
++				// Add a pad file starting from alignedOffset to insertOffset
++				pfile, err := uefi.CreatePadFile(insertOffset - alignedOffset)
++				if err != nil {
++					return err
+ 				}
+-				if newOffset != alignedOffset {
+-					// Add a pad file starting from alignedOffset to newOffset
+-					pfile, err := uefi.CreatePadFile(newOffset - alignedOffset)
+-					if err != nil {
+-						return err
+-					}
+-					if err = f.InsertFile(alignedOffset, pfile.Buf()); err != nil {
+-						return fmt.Errorf("file %s: %v", pfile.Header.GUID, err)
+-					}
++				if err = f.InsertFile(alignedOffset, pfile.Buf()); err != nil {
++					return fmt.Errorf("file %s: %v", pfile.Header.GUID, err)
+ 				}
+-				alignedOffset = newOffset
+ 			}
+-			if err = f.InsertFile(alignedOffset, fileBuf); err != nil {
++			if err = f.InsertFile(insertOffset, fileBuf); err != nil {
+ 				return fmt.Errorf("file %s: %v", file.Header.GUID, err)
+ 			}
+-			fileOffset = alignedOffset + fileLen
++			fileOffset = insertOffset + fileLen
+ 		}
+ 
+ 		// Check if we're out of space.
+@@ -314,7 +312,9 @@ func (v *Assemble) Visit(f uefi.Firmware) error {
+ 				if compressor == nil {
+ 					return fmt.Errorf("unknown guid defined from section %v, should not have encapsulated sections", f)
+ 				}
+-				if fBuf, err := compressor.Encode(secData); err == nil {
++				if orig, ok := reusableOriginalStream(f, ts, compressor, secData); ok { // reuse when unchanged; recompressing may overflow the volume
++					f.SetBuf(orig)
++				} else if fBuf, err := compressor.Encode(secData); err == nil {
+ 					f.SetBuf(fBuf)
+ 				} else {
+ 					return err
+@@ -499,3 +499,71 @@ func (v *Assemble) Visit(f uefi.Firmware) error {
+ 	return err
+ 
+ }
++
++func fileLayoutOffset(file *uefi.File, fileOffset uint64) (alignedOffset, insertOffset uint64) {
++	alignedOffset = uefi.Align8(fileOffset)
++	insertOffset = alignedOffset
++	if alignBase := file.Header.Attributes.GetAlignment(); alignBase != 1 {
++		hl := file.HeaderLen() // the data, not the header, must be aligned
++		fileDataOffset := uefi.Align(alignedOffset+hl, alignBase)
++		newOffset := fileDataOffset - hl
++		if gap := newOffset - alignedOffset; gap >= 8 && gap < uefi.FileHeaderMinLength {
++			fileDataOffset = uefi.Align(fileDataOffset+1, alignBase) // no room for a pad file, re-align
++			newOffset = fileDataOffset - hl
++		}
++		insertOffset = newOffset
++	}
++	return alignedOffset, insertOffset
++}
++
++func fvLayoutEnd(f *uefi.FirmwareVolume) uint64 { // offset just past the last file
++	fileOffset := f.DataOffset
++	for _, file := range f.Files {
++		_, insertOffset := fileLayoutOffset(file, fileOffset)
++		fileOffset = insertOffset + uint64(len(file.Buf()))
++	}
++	return fileOffset
++}
++
++func shrinkPadFiles(f *uefi.FirmwareVolume, need uint64) uint64 { // shrink pads by up to need bytes, from the last one backwards, never below the header size
++	var removed uint64
++	for i := len(f.Files) - 1; i >= 0 && need > 0; i-- {
++		file := f.Files[i]
++		if file.Header.Type != uefi.FVFileTypePad {
++			continue
++		}
++		size := uint64(len(file.Buf()))
++		if size <= uefi.FileHeaderMinLength {
++			continue
++		}
++		shrink := uefi.Align8(need) // whole 8 byte blocks so the following files keep their position
++		if max := size - uefi.FileHeaderMinLength; shrink > max {
++			shrink = max
++		}
++		pfile, err := uefi.CreatePadFile(size - shrink)
++		if err != nil {
++			break
++		}
++		f.Files[i] = pfile
++		removed += shrink
++		if shrink >= need {
++			need = 0
++		} else {
++			need -= shrink
++		}
++	}
++	return removed
++}
++
++func reusableOriginalStream(s *uefi.Section, ts *uefi.SectionGUIDDefined, compressor compression.Compressor, secData []byte) ([]byte, bool) { // original stream when it still decodes to exactly secData
++	buf := s.Buf()
++	if int(ts.DataOffset) >= len(buf) {
++		return nil, false // no original stream, e.g. a newly created section
++	}
++	orig := buf[ts.DataOffset:]
++	decoded, err := compressor.Decode(orig)
++	if err != nil {
++		return nil, false
++	}
++	return orig, bytes.Equal(decoded, secData)
++}
+diff --git a/pkg/visitors/cli.go b/pkg/visitors/cli.go
+index 4246ba5..90d5b8e 100644
+--- a/pkg/visitors/cli.go
++++ b/pkg/visitors/cli.go
+@@ -17,7 +17,8 @@ import (
+ var visitorRegistry = map[string]visitorEntry{}
+ 
+ type visitorEntry struct {
+-	numArgs       int
++	minArgs       int
++	maxArgs       int
+ 	help          string
+ 	createVisitor func([]string) (uefi.Visitor, error)
+ }
+@@ -31,11 +32,17 @@ const (
+ // command line, it should have an init function which registers a
+ // `createVisitor` function here.
+ func RegisterCLI(name string, help string, numArgs int, createVisitor func([]string) (uefi.Visitor, error)) {
++	RegisterCLIRange(name, help, numArgs, numArgs, createVisitor)
++}
++
++// RegisterCLIRange registers a command with between minArgs and maxArgs arguments; optional arguments are only consumed when they are not registered command names.
++func RegisterCLIRange(name string, help string, minArgs int, maxArgs int, createVisitor func([]string) (uefi.Visitor, error)) {
+ 	if _, ok := visitorRegistry[name]; ok {
+ 		panic(fmt.Sprintf("two visitors registered the same name: '%s'", name))
+ 	}
+ 	visitorRegistry[name] = visitorEntry{
+-		numArgs:       numArgs,
++		minArgs:       minArgs,
++		maxArgs:       maxArgs,
+ 		createVisitor: createVisitor,
+ 		help:          help,
+ 	}
+@@ -51,20 +58,26 @@ func ParseCLI(args []string) ([]uefi.Visitor, error) {
+ 		if !ok {
+ 			return []uefi.Visitor{}, fmt.Errorf("could not find command '%s'\n%s", cmd, helpMessage)
+ 		}
+-		if o.numArgs > len(args) {
++		if o.minArgs > len(args) {
+ 			return []uefi.Visitor{}, fmt.Errorf("too few arguments for command '%s', got %d, expected %d.\nSynopsis: %s",
+-				cmd, len(args), o.numArgs, o.help)
++				cmd, len(args), o.minArgs, o.help)
+ 		}
+-		visitor, err := o.createVisitor(args[:o.numArgs])
++		numArgs := o.minArgs
++		for numArgs < o.maxArgs && numArgs < len(args) && !isRegisteredCommand(args[numArgs]) {
++			numArgs++
++		}
++		visitor, err := o.createVisitor(args[:numArgs])
+ 		if err != nil {
+ 			return []uefi.Visitor{}, err
+ 		}
+ 		visitors = append(visitors, visitor)
+-		args = args[o.numArgs:]
++		args = args[numArgs:]
+ 	}
+ 	return visitors, nil
+ }
+ 
++func isRegisteredCommand(name string) bool { _, ok := visitorRegistry[name]; return ok }
++
+ // ExecuteCLI applies each Visitor over the firmware in sequence.
+ func ExecuteCLI(f uefi.Firmware, v []uefi.Visitor) error {
+ 	for i := range v {
+diff --git a/pkg/visitors/extractpe32.go b/pkg/visitors/extractpe32.go
+new file mode 100644
+index 0000000..762c8d1
+--- /dev/null
++++ b/pkg/visitors/extractpe32.go
+@@ -0,0 +1,119 @@
++package visitors
++
++import (
++	"fmt"
++	"os"
++	"path/filepath"
++
++	"github.com/linuxboot/fiano/pkg/guid"
++	"github.com/linuxboot/fiano/pkg/uefi"
++)
++
++type ExtractPE32 struct {
++	Predicate    FindPredicate    // files to extract images from
++	SectionType  uefi.SectionType // PE32, PIC or TE; zero value selects all of them
++	Path         string           // optional directory to write the images to
++	Images       []*ExtractedImage
++	MatchedFiles int // number of files which matched the Predicate
++	currentFile  *uefi.File
++}
++
++type ExtractedImage struct {
++	File    *uefi.File       // firmware file the image was extracted from
++	Section *uefi.Section    // section the image was extracted from
++	GUID    guid.GUID        // GUID of the file
++	Type    uefi.SectionType // PE32, PIC or TE
++	Data    []byte           // image data, without the section header
++}
++
++func (v *ExtractPE32) Run(f uefi.Firmware) error {
++	find := Find{Predicate: v.Predicate}
++	if err := find.Run(f); err != nil {
++		return err
++	}
++	v.MatchedFiles = len(find.Matches)
++	for _, m := range find.Matches {
++		if err := m.Apply(v); err != nil {
++			return err
++		}
++	}
++	return v.writeImages()
++}
++
++func (v *ExtractPE32) Visit(f uefi.Firmware) error {
++	switch f := f.(type) {
++	case *uefi.File:
++		old := v.currentFile
++		v.currentFile = f
++		err := f.ApplyChildren(v)
++		v.currentFile = old
++		return err
++	case *uefi.Section:
++		if v.currentFile != nil && wantedImageSection(v.SectionType, f.Header.Type) {
++			data, err := sectionImageData(f)
++			if err != nil {
++				return err
++			}
++			v.Images = append(v.Images, &ExtractedImage{
++				File:    v.currentFile,
++				Section: f,
++				GUID:    v.currentFile.Header.GUID,
++				Type:    f.Header.Type,
++				Data:    data,
++			})
++		}
++		return f.ApplyChildren(v)
++	default:
++		return f.ApplyChildren(v)
++	}
++}
++
++func (v *ExtractPE32) writeImages() error {
++	if v.Path == "" || len(v.Images) == 0 {
++		return nil
++	}
++	if err := os.MkdirAll(v.Path, 0755); err != nil {
++		return err
++	}
++	counters := map[string]int{}
++	for _, image := range v.Images {
++		stem := image.GUID.String()
++		ext := ".efi"
++		if image.Type == uefi.SectionTypeTE {
++			ext = ".te"
++		}
++		counters[stem]++
++		filename := stem + ext
++		if counters[stem] > 1 {
++			filename = fmt.Sprintf("%s_%d%s", stem, counters[stem], ext)
++		}
++		if err := os.WriteFile(filepath.Join(v.Path, filename), image.Data, 0666); err != nil {
++			return err
++		}
++	}
++	return nil
++}
++
++func wantedImageSection(want, t uefi.SectionType) bool {
++	switch want {
++	case uefi.SectionTypePE32, uefi.SectionTypePIC, uefi.SectionTypeTE:
++		return want == t
++	case uefi.SectionTypeAll:
++		return t == uefi.SectionTypePE32 || t == uefi.SectionTypePIC || t == uefi.SectionTypeTE
++	}
++	return false
++}
++
++func sectionImageData(s *uefi.Section) ([]byte, error) {
++	headerLen := uint64(uefi.SectionMinLength)
++	if s.Header.Size == [3]uint8{0xFF, 0xFF, 0xFF} {
++		headerLen = uefi.SectionExtMinLength
++	}
++	buf := s.Buf()
++	if uint64(len(buf)) < headerLen {
++		return nil, fmt.Errorf("section of type %v is too short to contain a section header", s.Header.Type)
++	}
++	data := make([]byte, uint64(len(buf))-headerLen)
++	copy(data, buf[headerLen:])
++	return data, nil
++}
+diff --git a/pkg/visitors/findpattern.go b/pkg/visitors/findpattern.go
+new file mode 100644
+index 0000000..0531f88
+--- /dev/null
++++ b/pkg/visitors/findpattern.go
+@@ -0,0 +1,63 @@
++package visitors
++
++import (
++	"fmt"
++	"io"
++	"os"
++
++	"github.com/linuxboot/fiano/pkg/guid"
++	"github.com/linuxboot/fiano/pkg/uefi"
++)
++
++type FindPattern struct {
++	Predicate FindPredicate // files to search
++	Pattern   string        // hex pattern with optional '.' wildcards
++	W         io.Writer     // optional writer the matches are printed to
++	Matches   []PatternMatch
++}
++
++type PatternMatch struct {
++	GUID   guid.GUID        // GUID of the file the pattern was found in
++	Type   uefi.SectionType // type of the section the pattern was found in
++	Offset uint64           // offset within the image data, relative to the image without the section header
++}
++
++func (v *FindPattern) Run(f uefi.Firmware) error {
++	pattern, err := compileHexPattern(v.Pattern)
++	if err != nil {
++		return err
++	}
++	extract := &ExtractPE32{Predicate: v.Predicate}
++	if err := extract.Run(f); err != nil {
++		return err
++	}
++	for _, image := range extract.Images {
++		for _, off := range pattern.findAll(image.Data) {
++			v.Matches = append(v.Matches, PatternMatch{GUID: image.GUID, Type: image.Type, Offset: uint64(off)})
++		}
++	}
++	if v.W != nil {
++		for _, m := range v.Matches {
++			if _, err := fmt.Fprintf(v.W, "%v %v %#x\n", m.GUID, m.Type, m.Offset); err != nil {
++				return err
++			}
++		}
++	}
++	return nil
++}
++
++func (v *FindPattern) Visit(f uefi.Firmware) error { return nil }
++
++func init() {
++	RegisterCLI("find_pattern", "find all occurrences of a hex pattern (with '.' wildcards) in the PE32/TE sections of the files with the given GUID", 2, func(args []string) (uefi.Visitor, error) {
++		g, err := guid.Parse(args[0])
++		if err != nil {
++			return nil, err
++		}
++		return &FindPattern{
++			Predicate: FindFileGUIDPredicate(*g),
++			Pattern:   args[1],
++			W:         os.Stdout,
++		}, nil
++	})
++}
+diff --git a/pkg/visitors/hexpattern.go b/pkg/visitors/hexpattern.go
+new file mode 100644
+index 0000000..56a95c9
+--- /dev/null
++++ b/pkg/visitors/hexpattern.go
+@@ -0,0 +1,88 @@
++package visitors
++
++import (
++	"errors"
++	"fmt"
++)
++
++type hexPattern struct {
++	value []byte // pattern bytes with all wildcard bits cleared
++	mask  []byte // bit set for every pattern bit that is not a wildcard
++}
++
++func compileHexPattern(s string) (*hexPattern, error) {
++	if len(s) == 0 {
++		return nil, errors.New("pattern is empty")
++	}
++	if len(s)%2 != 0 {
++		return nil, fmt.Errorf("pattern %q has odd length, patterns must have two symbols per byte", s)
++	}
++	p := &hexPattern{value: make([]byte, len(s)/2), mask: make([]byte, len(s)/2)}
++	for i := 0; i < len(s); i += 2 {
++		hi, hiMask, err := hexSymbol(s[i])
++		if err != nil {
++			return nil, fmt.Errorf("pattern %q: %w", s, err)
++		}
++		lo, loMask, err := hexSymbol(s[i+1])
++		if err != nil {
++			return nil, fmt.Errorf("pattern %q: %w", s, err)
++		}
++		p.value[i/2] = hi<<4 | lo
++		p.mask[i/2] = hiMask<<4 | loMask
++	}
++	return p, nil
++}
++
++func hexSymbol(c byte) (value, mask byte, err error) {
++	switch {
++	case c == '.':
++		return 0, 0, nil
++	case '0' <= c && c <= '9':
++		return c - '0', 0xF, nil
++	case 'a' <= c && c <= 'f':
++		return c - 'a' + 10, 0xF, nil
++	case 'A' <= c && c <= 'F':
++		return c - 'A' + 10, 0xF, nil
++	}
++	return 0, 0, fmt.Errorf("invalid symbol %q, expected a hex digit or '.'", string(rune(c)))
++}
++
++func (p *hexPattern) Len() int { return len(p.value) }
++
++func (p *hexPattern) findAll(data []byte) []int {
++	var offsets []int
++	for off := 0; off+p.Len() <= len(data); {
++		match := true
++		for i, mask := range p.mask {
++			if data[off+i]&mask != p.value[i] {
++				match = false
++				break
++			}
++		}
++		if match {
++			offsets = append(offsets, off)
++			off += p.Len()
++		} else {
++			off++
++		}
++	}
++	return offsets
++}
++
++func patternSpan(data []byte, off uint64, n int) error {
++	remain := uint64(len(data)) - min(off, uint64(len(data)))
++	if uint64(n) > remain {
++		return fmt.Errorf("unable to apply pattern at offset %#x: only %d of the %d pattern bytes fit", off, remain, n)
++	}
++	return nil
++}
++
++func (p *hexPattern) applyAt(data []byte, off uint64) error {
++	if err := patternSpan(data, off, p.Len()); err != nil {
++		return err
++	}
++	for i, mask := range p.mask {
++		data[off+uint64(i)] = data[off+uint64(i)]&^mask | p.value[i]&mask
++	}
++	return nil
++}
+diff --git a/pkg/visitors/patch.go b/pkg/visitors/patch.go
+new file mode 100644
+index 0000000..e7d6ac3
+--- /dev/null
++++ b/pkg/visitors/patch.go
+@@ -0,0 +1,345 @@
++package visitors
++
++import (
++	"bufio"
++	"bytes"
++	"errors"
++	"fmt"
++	"io"
++	"os"
++	"strconv"
++	"strings"
++
++	"github.com/linuxboot/fiano/pkg/guid"
++	"github.com/linuxboot/fiano/pkg/uefi"
++)
++
++const patchFileName = "patches.txt" // read when the patch command is used without arguments
++
++type PatchType byte
++
++const (
++	PatchTypePattern PatchType = 'P' // replace every occurrence of a find pattern
++	PatchTypeOffset  PatchType = 'O' // replace at a fixed hex offset
++)
++
++type PatchRule struct {
++	GUID        guid.GUID        // firmware file to patch
++	SectionType uefi.SectionType // PE32 or TE
++	Type        PatchType        // 'P' (pattern) or 'O' (offset)
++	Find        *hexPattern      // find pattern (PatchTypePattern)
++	RawFind     string           // find pattern as written in the patch string
++	Offset      uint64           // offset within the image data (PatchTypeOffset)
++	Replace     *hexPattern      // replacement pattern, '.' keeps the original nibble
++}
++
++// ParsePatchString parses "FileGuid SectionType PatchType:FindPatternOrOffset:ReplacePattern".
++func ParsePatchString(s string) (*PatchRule, error) {
++	fields := strings.Fields(s)
++	if len(fields) != 3 {
++		return nil, fmt.Errorf("patch string must consist of 3 fields: FileGuid SectionType PatchType:FindPatternOrOffset:ReplacePattern, got %d", len(fields))
++	}
++	g, err := guid.Parse(fields[0])
++	if err != nil {
++		return nil, err
++	}
++	sectionType, err := strconv.ParseUint(fields[1], 16, 8)
++	if err != nil {
++		return nil, fmt.Errorf("unable to parse section type %q: %w", fields[1], err)
++	}
++	if uefi.SectionType(sectionType) != uefi.SectionTypePE32 && uefi.SectionType(sectionType) != uefi.SectionTypeTE {
++		return nil, fmt.Errorf("unsupported section type %#x, only PE32 (10) and TE (12) sections can be patched", sectionType)
++	}
++	patchType, findParam, replaceParam, err := parsePatchSpec(fields[2])
++	if err != nil {
++		return nil, err
++	}
++	replace, err := compileHexPattern(replaceParam)
++	if err != nil {
++		return nil, fmt.Errorf("invalid replacement pattern: %w", err)
++	}
++	patch := &PatchRule{
++		GUID:        *g,
++		SectionType: uefi.SectionType(sectionType),
++		Type:        patchType,
++		RawFind:     findParam,
++		Replace:     replace,
++	}
++	switch patchType {
++	case PatchTypePattern:
++		find, err := compileHexPattern(findParam)
++		if err != nil {
++			return nil, fmt.Errorf("invalid find pattern: %w", err)
++		}
++		if find.Len() != replace.Len() {
++			return nil, fmt.Errorf("find pattern %q and replacement pattern %q have different lengths (%d and %d bytes), they must match for a pattern patch",
++				findParam, replaceParam, find.Len(), replace.Len())
++		}
++		patch.Find = find
++	case PatchTypeOffset:
++		patch.Offset, err = parsePatchOffset(findParam)
++		if err != nil {
++			return nil, err
++		}
++	}
++	return patch, nil
++}
++
++// ParsePatchFile parses one patch string per line; blank lines and '#' comments are skipped.
++func ParsePatchFile(r io.Reader) ([]*PatchRule, error) {
++	var patches []*PatchRule
++	scanner := bufio.NewScanner(r)
++	line := 0
++	for scanner.Scan() {
++		line++
++		s := strings.TrimSpace(scanner.Text())
++		if s == "" || strings.HasPrefix(s, "#") {
++			continue
++		}
++		patch, err := ParsePatchString(s)
++		if err != nil {
++			return nil, fmt.Errorf("line %d: %w", line, err)
++		}
++		patches = append(patches, patch)
++	}
++	if err := scanner.Err(); err != nil {
++		return nil, err
++	}
++	if len(patches) == 0 {
++		return nil, errors.New("no patches found")
++	}
++	return patches, nil
++}
++
++func parsePatchSpec(s string) (PatchType, string, string, error) {
++	parts := strings.Split(s, ":")
++	if len(parts) != 3 {
++		return 0, "", "", fmt.Errorf("patch specification %q must consist of 3 colon separated parts: PatchType:FindPatternOrOffset:ReplacePattern", s)
++	}
++	var patchType PatchType
++	switch parts[0] {
++	case "P":
++		patchType = PatchTypePattern
++	case "O":
++		patchType = PatchTypeOffset
++	default:
++		return 0, "", "", fmt.Errorf("unknown patch type %q, must be 'P' (pattern) or 'O' (offset)", parts[0])
++	}
++	if parts[1] == "" || parts[2] == "" {
++		return 0, "", "", fmt.Errorf("patch specification %q contains an empty parameter", s)
++	}
++	return patchType, parts[1], parts[2], nil
++}
++
++func parsePatchOffset(s string) (uint64, error) {
++	offset, err := strconv.ParseUint(strings.TrimPrefix(strings.TrimPrefix(s, "0x"), "0X"), 16, 64)
++	if err != nil {
++		return 0, fmt.Errorf("unable to parse offset %q: %w", s, err)
++	}
++	return offset, nil
++}
++
++type Patch struct {
++	PatchString string       // single patch string, used when Patches is nil
++	Patches     []*PatchRule // list of patches applied in order, takes precedence over PatchString
++	Lenient     bool         // skip patches which do not apply instead of failing
++	W           io.Writer    // a line is printed here for every applied patch
++	Patched     []PatchedSection
++	Skipped     []SkippedPatch
++}
++
++type PatchedSection struct {
++	GUID    guid.GUID        // GUID of the patched firmware file
++	Type    uefi.SectionType // type of the patched section
++	Offsets []uint64         // offsets within the image data
++}
++
++type SkippedPatch struct {
++	Patch *PatchRule // the skipped patch
++	Err   error      // why it was skipped
++}
++
++func (v *Patch) Run(f uefi.Firmware) error {
++	patches := v.Patches
++	if patches == nil {
++		if v.PatchString == "" {
++			return errors.New("no patch string given")
++		}
++		patch, err := ParsePatchString(v.PatchString)
++		if err != nil {
++			return err
++		}
++		patches = []*PatchRule{patch}
++	}
++	for _, patch := range patches {
++		if err := v.applyPatch(f, patch); err != nil {
++			var na *notApplicableError
++			if v.Lenient && errors.As(err, &na) {
++				v.Skipped = append(v.Skipped, SkippedPatch{Patch: patch, Err: err})
++				continue
++			}
++			return err
++		}
++	}
++	return nil
++}
++
++func (v *Patch) Visit(f uefi.Firmware) error { return nil }
++
++type notApplicableError struct{ err error }
++
++func notApplicable(err error) error { return &notApplicableError{err: err} }
++
++func (e *notApplicableError) Error() string { return e.err.Error() }
++func (e *notApplicableError) Unwrap() error { return e.err }
++
++func (v *Patch) applyPatch(f uefi.Firmware, patch *PatchRule) error {
++	extract := &ExtractPE32{
++		Predicate:   FindFileGUIDPredicate(patch.GUID),
++		SectionType: patch.SectionType,
++	}
++	if err := extract.Run(f); err != nil {
++		return err
++	}
++	if len(extract.Images) == 0 {
++		switch extract.MatchedFiles {
++		case 0:
++			return notApplicable(fmt.Errorf("no files with GUID %v found in the image", patch.GUID))
++		default:
++			return notApplicable(fmt.Errorf("none of the %d files with GUID %v contain a %v section", extract.MatchedFiles, patch.GUID, patch.SectionType))
++		}
++	}
++	for _, image := range extract.Images {
++		occurrences, err := patchImage(patch, image)
++		if err != nil {
++			if errors.Is(err, errPatternNotFound) {
++				if hints := patternHints(f, patch); len(hints) > 0 {
++					err = fmt.Errorf("%w; the pattern occurs in other files: %s", err, strings.Join(hints, ", "))
++				}
++			}
++			return err
++		}
++		name := uiName(image.File)
++		if name == "" {
++			name = image.GUID.String()
++		}
++		var offsets []uint64
++		for _, o := range occurrences {
++			if v.W != nil {
++				if _, err := fmt.Fprintf(v.W, "patch: replaced %d bytes at offset %Xh in %s %X -> %X\n", len(o.Old), o.Offset, name, o.Old, o.New); err != nil {
++					return err
++				}
++			}
++			offsets = append(offsets, o.Offset)
++		}
++		v.Patched = append(v.Patched, PatchedSection{GUID: image.GUID, Type: image.Type, Offsets: offsets})
++	}
++	return nil
++}
++
++var errPatternNotFound = errors.New("pattern not found")
++
++func patternHints(f uefi.Firmware, patch *PatchRule) []string {
++	if patch.Type != PatchTypePattern {
++		return nil
++	}
++	find := &FindPattern{
++		Predicate: func(f uefi.Firmware) bool { _, ok := f.(*uefi.File); return ok },
++		Pattern:   patch.RawFind,
++	}
++	if err := find.Run(f); err != nil {
++		return nil
++	}
++	var hints []string
++	for _, m := range find.Matches {
++		hints = append(hints, fmt.Sprintf("%v %v %#x", m.GUID, m.Type, m.Offset))
++		if len(hints) == 3 {
++			if extra := len(find.Matches) - len(hints); extra > 0 {
++				hints = append(hints, fmt.Sprintf("and %d more", extra))
++			}
++			break
++		}
++	}
++	return hints
++}
++
++type patchedOccurrence struct {
++	Offset uint64 // offset within the image data
++	Old    []byte // image data at the offset before the patch
++	New    []byte // image data at the offset after the patch
++}
++
++func patchImage(patch *PatchRule, image *ExtractedImage) ([]patchedOccurrence, error) {
++	if err := validateImageSignature(image.Type, image.Data); err != nil {
++		return nil, notApplicable(fmt.Errorf("file %v: %w", image.GUID, err))
++	}
++	var offsets []uint64
++	switch patch.Type {
++	case PatchTypePattern:
++		for _, off := range patch.Find.findAll(image.Data) {
++			offsets = append(offsets, uint64(off))
++		}
++		if len(offsets) == 0 {
++			return nil, notApplicable(fmt.Errorf("file %v: %w in %v section", image.GUID, errPatternNotFound, image.Type))
++		}
++	case PatchTypeOffset:
++		offsets = []uint64{patch.Offset}
++	}
++	n := patch.Replace.Len()
++	var occurrences []patchedOccurrence
++	for _, off := range offsets {
++		if err := patternSpan(image.Data, off, n); err != nil {
++			return nil, notApplicable(fmt.Errorf("file %v: %w", image.GUID, err))
++		}
++		old := append([]byte(nil), image.Data[off:off+uint64(n)]...)
++		if err := patch.Replace.applyAt(image.Data, off); err != nil {
++			return nil, notApplicable(fmt.Errorf("file %v: %w", image.GUID, err))
++		}
++		occurrences = append(occurrences, patchedOccurrence{
++			Offset: off,
++			Old:    old,
++			New:    append([]byte(nil), image.Data[off:off+uint64(n)]...),
++		})
++	}
++	if err := replaceExecSectionData(image.Section, image.Data); err != nil {
++		return nil, fmt.Errorf("file %v: %w", image.GUID, err)
++	}
++	return occurrences, nil
++}
++
++func uiName(f *uefi.File) string {
++	for _, s := range f.Sections {
++		if s.Header.Type == uefi.SectionTypeUserInterface {
++			return s.Name
++		}
++	}
++	return ""
++}
++
++func validateImageSignature(t uefi.SectionType, data []byte) error {
++	want := "MZ"
++	if t == uefi.SectionTypeTE {
++		want = "VZ"
++	}
++	if !bytes.HasPrefix(data, []byte(want)) {
++		return fmt.Errorf("extracted %v image does not start with the expected %q signature", t, want)
++	}
++	return nil
++}
++
++func init() {
++	RegisterCLIRange("patch", `patch the PE32/TE image of a file with a UEFIPatch style patch string "FileGuid SectionType PatchType:FindPatternOrOffset:ReplacePattern" (SectionType: PE32=10, TE=12; PatchType: P=pattern, O=offset); a line is printed for every applied patch; without an argument the patches are read from patches.txt in the current directory, one patch per line with '#' comments, and patches which do not apply are silently skipped`, 0, 1, func(args []string) (uefi.Visitor, error) {
++		if len(args) == 0 {
++			data, err := os.ReadFile(patchFileName)
++			if err != nil {
++				return nil, err
++			}
++			patches, err := ParsePatchFile(bytes.NewReader(data))
++			if err != nil {
++				return nil, fmt.Errorf("%s: %w", patchFileName, err)
++			}
++			return &Patch{Patches: patches, Lenient: true, W: os.Stdout}, nil
++		}
++		return &Patch{PatchString: args[0], W: os.Stdout}, nil
++	})
++}
+diff --git a/pkg/visitors/replacepe32.go b/pkg/visitors/replacepe32.go
+index 7c91e3b..399391b 100644
+--- a/pkg/visitors/replacepe32.go
++++ b/pkg/visitors/replacepe32.go
+@@ -63,9 +63,7 @@ func (v *ReplacePE32) Visit(f uefi.Firmware) error {
+ 
+ 	case *uefi.Section:
+ 		if f.Header.Type == uefi.SectionTypePE32 {
+-			f.SetBuf(v.NewPE32)
+-			f.Encapsulated = nil // Should already be empty
+-			if err := f.GenSecHeader(); err != nil {
++			if err := replaceExecSectionData(f, v.NewPE32); err != nil {
+ 				return err
+ 			}
+ 		}
+@@ -77,6 +75,12 @@ func (v *ReplacePE32) Visit(f uefi.Firmware) error {
+ 	}
+ }
+ 
++func replaceExecSectionData(s *uefi.Section, data []byte) error { // replace image data and regenerate the section header
++	s.SetBuf(data)
++	s.Encapsulated = nil // Should already be empty
++	return s.GenSecHeader()
++}
++
+ func init() {
+ 	RegisterCLI("replace_pe32", "replace a pe32 given a GUID and new file", 2, func(args []string) (uefi.Visitor, error) {
+ 		pred, err := FindFilePredicate(args[0])
