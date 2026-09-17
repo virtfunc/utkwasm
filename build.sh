@@ -13,6 +13,7 @@ rm -rf fiano
 git clone https://github.com/linuxboot/fiano
 cd fiano
 git apply ../fiano_sigpatcher_v5.patch
+git apply ../0001-fiano-perf-fixes.patch
 cd ..
 
 echo "Building utk.wasm..."
@@ -25,5 +26,3 @@ if [ ! -f wasm_exec.js ]; then
 fi
 
 du -h utk.wasm wasm_exec.js
-
-echo "Compressing..."

@@ -9,7 +9,7 @@
         {
       "name": "InsecureBoot (Alternative Method)",
       "description": "Allows loading unsigned EFI binaries with secure boot on. <a href=\"https://virtfunc.com/projects/insecureboot/\">See writeup</a>.",
-      "content": "# Replace EFI_SECURITY_VIOLATION and EFI_ACCESS_DENIED with EFI_SUCCESS in SecurityStubDxe\nF80697E9-7FD6-4665-8646-88E33EF71DFC 10 P:1A00000000000080:0000000000000000\nF80697E9-7FD6-4665-8646-88E33EF71DFC 10 P:0F00000000000080:0000000000000000"
+      "content": "# Replace EFI_SECURITY_VIOLATION and EFI_ACCESS_DENIED with EFI_SUCCESS in SecurityStubDxe\nF80697E9-7FD6-4665-8646-88E33EF71DFC 10 P:1A00000000000080:0000000000000000\nF80697E9-7FD6-4665-8646-88E33EF71DFC 10 P:0F00000000000080:0000000000000000\n"
     },
     {
       "name": "TPM2 AntiLog",
